@@ -68,6 +68,16 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+body {
     background-image: linear-gradient(to right, #00A0E8, #ECA0BE);
 }
 
@@ -119,4 +129,28 @@ footer {
     display: block;
     text-decoration: none;
     color: inherit;
+}
+
+/* Estilos para el carrusel de habilidades */
+#skillsCarousel .carousel-item {
+    /* Asegura que haya suficiente espacio para ver los logos */
+    padding: 2rem 0;
+}
+
+.skill-logo {
+    max-width: 100%; /* Asegura que la imagen no se desborde del contenedor */
+    height: auto;   /* Mantiene la proporción de la imagen */
+}
+
+.skill-comment-space {
+    height: 40px; /* Espacio reservado para comentarios futuros */
+}
+
+/* Estilo para los controles del carrusel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+    border-radius: 50%; /* Hace el fondo circular */
+    padding: 1.5rem;
+    background-size: 50% 50%;
 }
