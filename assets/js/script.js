@@ -4,6 +4,43 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
 
 // Esperar a que el DOM esté completamente cargado
 $(document).ready(function() {
+    
+    // --- Lógica del Selector de Temas (Mejorada) ---
+    const body = $('body');
+    const btnDefault = $('#btn-theme-default');
+    const btnAlt = $('#btn-theme-alt');
+
+    // Función única para cambiar el tema visualmente
+    function setThemeState(themeName) {
+        if (themeName === 'alternative') {
+            body.addClass('theme-alternative');
+            btnAlt.addClass('active');
+            btnDefault.removeClass('active');
+        } else {
+            body.removeClass('theme-alternative');
+            btnDefault.addClass('active');
+            btnAlt.removeClass('active');
+        }
+    }
+
+    // 1. Cargar tema guardado al iniciar (Persistencia)
+    const savedTheme = localStorage.getItem('portfolioTheme');
+    if (savedTheme) {
+        setThemeState(savedTheme);
+    }
+
+    // 2. Eventos de clic (Guardar y Aplicar)
+    btnDefault.click(function() {
+        setThemeState('default');
+        localStorage.setItem('portfolioTheme', 'default');
+    });
+
+    btnAlt.click(function() {
+        setThemeState('alternative');
+        localStorage.setItem('portfolioTheme', 'alternative');
+    });
+    // ------------------------------------
+
     // Capturar formulario
     const formContacto = $("#form-contacto");
 

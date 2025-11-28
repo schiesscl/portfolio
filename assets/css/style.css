@@ -1,156 +1,105 @@
-.progress {
-    width: 100%;
-}
-
-#skill-html, #skill-css, #skill-bootstrap, #skill-javascript, #skill-jquery, #skill-maven, #skill-mysql, #skill-springboot, #skill-nodejs, #skill-expressjs, #skill-postgresql, #skill-python, #skill-react {
-    width: 0%;
-}
-
-#skill-html{
-    background-image: linear-gradient(to right, #E44D26 0%, #F16529 100%);
-}
-
-#skill-bootstrap{
-    background-color: #7B32FF;
-}
-
-#skill-mysql{
-    background-image: linear-gradient(to right, #00758F 0%, #F29111 100%);
-}
-
-#skill-java{
-    background-color: #E66F00;
-}
-
-#skill-maven{
-    background-image: linear-gradient(to right, #34326B 0%, #81297C 17%, #B32151 33%, #CD2137 50%, #E56C2C 66%, #F79825 100%);
-}
-
-#skill-nodejs {
-    background-image: linear-gradient(to right, #68A063 0%, #3C873A 100%);
-}
-
-#skill-expressjs {
-    background-image: linear-gradient(to right, #000000 0%, #303030 100%);
-}
-
-#skill-postgresql {
-    background-image: linear-gradient(to right, #336791 0%, #0A4169 100%);
-}
-
-#skill-python {
-    background-image: linear-gradient(to right, #FFD43B 0%, #306998 100%);
-}
-
-#skill-react {
-    background-image: linear-gradient(to right, #61DAFB 0%, #00D8FF 100%);
-}
-
-.progress {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    animation: glowing 2s linear infinite;
-}
-
-@keyframes glowing {
-    0% {
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-    }
-    100% {
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    }
-}
-
 .navbar {
-    background-color: #00A0E8;
+    background-color: transparent; /* Hacemos transparente para que se vea bien con ambos fondos */
+    background-image: linear-gradient(to right, rgba(0, 160, 232, 0.9), rgba(0, 160, 232, 0.9)); /* Mantenemos el azul original en el nav pero con opacidad */
 }
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    /* Fondo Original */
+    background-image: linear-gradient(to right, #00A0E8, #ECA0BE);
+    transition: background-image 0.5s ease-in-out; /* Transición suave entre temas */
+}
+
+/* Clase para el Tema Alternativo */
+body.theme-alternative {
+    background-image: linear-gradient(to right, #838885, #c1a0a0, #ECA0BE);
+}
+
+/* Ajuste para el Navbar en el tema alternativo */
+body.theme-alternative .navbar {
+    background-image: linear-gradient(to right, rgba(131, 136, 133, 0.9), rgba(131, 136, 133, 0.9));
 }
 
 main {
     flex: 1;
 }
 
-body {
-    background-image: linear-gradient(to right, #00A0E8, #ECA0BE);
-}
-
-.btn {
-    background-color: #4235e9; /* Color inicial */
-    color: #ffffff; /* Color del texto */
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transición suave */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra inicial */
-}
-
-.btn:hover {
-    background-color: #964fea; /* Color al acercar el puntero */
-    box-shadow: 0 0 20px #6f42ea; /* Sombra al acercar el puntero */
-}
-
 footer {
-    background-color: #ECA0BE;
+    background-color: #ECA0BE; /* Este color se mantendrá en ambos temas */
+    transition: background-color 0.5s ease-in-out;
 }
 
-.navbar-toggler-icon {
-    filter: invert(100%) brightness(100%);
-  }
+/* --- CORRECCIÓN DE TAMAÑOS DE ÍCONOS --- */
 
-  footer img {
-    width: 30px; /* ajusta el ancho a 20px */
-    height: 30px; /* ajusta el alto a 20px */
-  }
-
-  .card-footer   img {
-    width: 25px; /* ajusta el ancho a 20px */
-    height: 25px; /* ajusta el alto a 20px */
-  }
-
-  .card-img-top {
-    transition: opacity 0.3s ease-in-out;
+/* Íconos del Footer (Github, LinkedIn, Resume) */
+footer img {
+    width: 40px;       /* Tamaño controlado */
+    height: auto;      /* Mantiene la proporción */
+    margin: 0 10px;    /* Espacio entre íconos */
+    transition: transform 0.3s ease;
 }
 
-.card:hover .card-img-top {
-    opacity: 0.7;
+footer img:hover {
+    transform: scale(1.1); /* Pequeño efecto al pasar el mouse */
+}
+
+/* Íconos pequeños en las tarjetas de proyectos */
+.culinariaJobsico, 
+.githubico {
+    width: 30px;       /* Tamaño controlado para íconos de proyectos */
+    height: auto;
+}
+
+/* Estilos para el Selector de Temas */
+#theme-switcher {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+}
+
+.theme-btn {
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 50%;
+    background-color: transparent;
     cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s, background-color 0.2s;
 }
 
-.card-img-wrapper {
-    position: relative;
-    overflow: hidden;
+.theme-btn:hover {
+    transform: scale(1.2);
 }
 
-.card-img-link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
+/* Indicador visual de cuál está activo */
+.theme-btn.active {
+    background-color: black;
 }
 
-/* Estilos para el carrusel de habilidades */
-#skillsCarousel .carousel-item {
-    /* Asegura que haya suficiente espacio para ver los logos */
-    padding: 2rem 0;
-}
+/* --- RESPONSIVE: SELECTOR DE TEMAS EN MÓVIL --- */
+@media (max-width: 768px) {
+    #theme-switcher {
+        top: auto;              /* Anular posición superior */
+        bottom: 20px;           /* Pegar al fondo */
+        left: 50%;              /* Centrar horizontalmente */
+        transform: translateX(-50%); /* Ajuste exacto del centro */
+        flex-direction: row;    /* Botones lado a lado, no uno sobre otro */
+        background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente para que se note */
+        padding: 10px 15px;
+        border-radius: 20px;
+        backdrop-filter: blur(5px); /* Efecto borroso moderno */
+    }
 
-.skill-logo {
-    max-width: 100%; /* Asegura que la imagen no se desborde del contenedor */
-    height: auto;   /* Mantiene la proporción de la imagen */
-}
-
-.skill-comment-space {
-    height: 40px; /* Espacio reservado para comentarios futuros */
-}
-
-/* Estilo para los controles del carrusel */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
-    border-radius: 50%; /* Hace el fondo circular */
-    padding: 1.5rem;
-    background-size: 50% 50%;
+    .theme-btn {
+        width: 25px; /* Un poco más grandes para tocar con el dedo */
+        height: 25px;
+    }
 }
