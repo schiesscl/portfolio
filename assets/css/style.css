@@ -1,58 +1,213 @@
-.navbar {
-    background-color: transparent; /* Hacemos transparente para que se vea bien con ambos fondos */
-    background-image: linear-gradient(to right, rgba(0, 160, 232, 0.9), rgba(0, 160, 232, 0.9)); /* Mantenemos el azul original en el nav pero con opacidad */
+/* ========================================
+   1. IMPORTACIONES Y VARIABLES
+   ======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=VT323&display=swap');
+
+:root {
+  --font-tech: 'VT323', monospace;
+  --font-text: 'Inter', sans-serif;
 }
 
+/* ========================================
+   2. ESTILOS BASE
+   ======================================== */
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    /* Fondo Original */
     background-image: linear-gradient(to right, #00A0E8, #ECA0BE);
-    transition: background-image 0.5s ease-in-out; /* Transición suave entre temas */
-}
-
-/* Clase para el Tema Alternativo */
-body.theme-alternative {
-    background-image: linear-gradient(to right, #838885, #c1a0a0, #ECA0BE);
-}
-
-/* Ajuste para el Navbar en el tema alternativo */
-body.theme-alternative .navbar {
-    background-image: linear-gradient(to right, rgba(131, 136, 133, 0.9), rgba(131, 136, 133, 0.9));
+    transition: background-image 0.5s ease-in-out;
+    font-family: var(--font-text);
+    font-weight: 300;
 }
 
 main {
     flex: 1;
 }
 
+/* ========================================
+   3. TIPOGRAFÍA
+   ======================================== */
+
+/* VT323 - Títulos y elementos estructurales */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-tech);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+h1 {
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: 3rem;
+  color: #fff;
+}
+
+/* Hero específico */
+#hero h1, .hero h1 {
+  font-size: 4.5rem;
+  line-height: 1;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+/* Cursor parpadeante estilo terminal */
+.cursor-blink {
+  display: inline-block;
+  margin-left: 8px;
+  animation: blink 1s step-start infinite;
+  color: inherit;
+}
+
+/* Animación de parpadeo */
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Inter - Texto legible */
+p {
+  font-family: var(--font-text);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ========================================
+   4. NAVEGACIÓN
+   ======================================== */
+.navbar {
+    background-color: transparent;
+    background-image: linear-gradient(to right, rgba(0, 160, 232, 0.9), rgba(0, 160, 232, 0.9));
+}
+
+.navbar-nav .nav-link,
+.nav-menu a {
+  font-family: var(--font-tech);
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ========================================
+   5. COMPONENTES - CARDS Y PROYECTOS
+   ======================================== */
+.card-title {
+  font-family: var(--font-tech);
+  font-size: 1.8rem;
+  text-transform: uppercase;
+}
+
+.card-text,
+.description,
+.portfolio-info p {
+  font-family: var(--font-text);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Íconos en tarjetas de proyectos */
+.culinariaJobsico, 
+.githubico {
+    width: 30px;
+    height: auto;
+}
+
+/* ========================================
+   6. SKILLS
+   ======================================== */
+.skills .progress .skill,
+.skill-name {
+  font-family: var(--font-tech);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+
+/* Espacio fijo para comentarios de versión */
+.skill-comment-space {
+  min-height: 30px; /* Altura mínima fija */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-text);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 8px;
+}
+
+/* ========================================
+   7. FORMULARIO DE CONTACTO
+   ======================================== */
+input, textarea, select {
+  font-family: var(--font-text);
+  font-size: 1rem;
+}
+
+input::placeholder, 
+textarea::placeholder {
+  font-family: var(--font-text);
+  font-weight: 300;
+}
+
+/* Botón de envío */
+#form-contacto input[type="submit"],
+#form-contacto button[type="submit"] {
+  font-family: var(--font-tech);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: #76a0d3;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 0.375rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: auto;
+  display: inline-block;
+}
+
+#form-contacto input[type="submit"]:hover,
+#form-contacto button[type="submit"]:hover {
+  background-color: #3d78bf;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#form-contacto input[type="submit"]:active,
+#form-contacto button[type="submit"]:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   8. FOOTER
+   ======================================== */
 footer {
-    background-color: #ECA0BE; /* Este color se mantendrá en ambos temas */
+    background-color: #ECA0BE;
     transition: background-color 0.5s ease-in-out;
 }
 
-/* --- CORRECCIÓN DE TAMAÑOS DE ÍCONOS --- */
-
-/* Íconos del Footer (Github, LinkedIn, Resume) */
 footer img {
-    width: 40px;       /* Tamaño controlado */
-    height: auto;      /* Mantiene la proporción */
-    margin: 0 10px;    /* Espacio entre íconos */
+    width: 40px;
+    height: auto;
+    margin: 0 10px;
     transition: transform 0.3s ease;
 }
 
 footer img:hover {
-    transform: scale(1.1); /* Pequeño efecto al pasar el mouse */
+    transform: scale(1.1);
 }
 
-/* Íconos pequeños en las tarjetas de proyectos */
-.culinariaJobsico, 
-.githubico {
-    width: 30px;       /* Tamaño controlado para íconos de proyectos */
-    height: auto;
-}
-
-/* Estilos para el Selector de Temas */
+/* ========================================
+   9. CONTROLES UI - SELECTOR DE TEMAS
+   ======================================== */
 #theme-switcher {
     position: fixed;
     left: 20px;
@@ -61,7 +216,7 @@ footer img:hover {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    z-index: 1000; /* Asegura que esté por encima de todo */
+    z-index: 1000;
 }
 
 .theme-btn {
@@ -79,60 +234,83 @@ footer img:hover {
     transform: scale(1.2);
 }
 
-/* Indicador visual de cuál está activo */
 .theme-btn.active {
     background-color: black;
 }
 
-/* --- RESPONSIVE: SELECTOR DE TEMAS EN MÓVIL --- */
-@media (max-width: 768px) {
-    #theme-switcher {
-        top: auto;              /* Anular posición superior */
-        bottom: 20px;           /* Pegar al fondo */
-        left: 50%;              /* Centrar horizontalmente */
-        transform: translateX(-50%); /* Ajuste exacto del centro */
-        flex-direction: row;    /* Botones lado a lado, no uno sobre otro */
-        background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente para que se note */
-        padding: 10px 15px;
-        border-radius: 20px;
-        -webkit-backdrop-filter: blur(5px); /* Safari 9+ */
-        backdrop-filter: blur(5px); /* Efecto borroso moderno */
-    }
-
-    .theme-btn {
-        width: 25px; /* Un poco más grandes para tocar con el dedo */
-        height: 25px;
-    }
-}
-
-/* --- BOTÓN VOLVER ARRIBA --- */
+/* ========================================
+   10. CONTROLES UI - BOTÓN VOLVER ARRIBA
+   ======================================== */
 #btn-back-to-top {
     position: fixed;
     bottom: 20px;
     right: 20px;
     width: 50px;
     height: 50px;
-    background-color: #ECA0BE; /* Color solicitado */
-    border-radius: 50%;        /* Forma circular */
+    background-color: #ECA0BE;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    z-index: 1000;             /* Asegura que flote sobre todo */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, background-color 0.3s;
 }
 
 #btn-back-to-top:hover {
-    transform: scale(1.1);     /* Efecto al pasar el mouse */
-    background-color: #d68aab; /* Un poco más oscuro al hacer hover */
+    transform: scale(1.1);
+    background-color: #d68aab;
 }
 
-/* Ajuste para móviles: Asegurar que no choque con el selector de temas */
+/* ========================================
+   11. TEMA ALTERNATIVO
+   ======================================== */
+body.theme-alternative {
+    background-image: linear-gradient(to right, #838885, #c1a0a0, #ECA0BE);
+}
+
+body.theme-alternative .navbar {
+    background-image: linear-gradient(to right, rgba(131, 136, 133, 0.9), rgba(131, 136, 133, 0.9));
+}
+
+body.theme-alternative #form-contacto input[type="submit"],
+body.theme-alternative #form-contacto button[type="submit"] {
+  background-color: #c1a0a0;
+}
+
+body.theme-alternative #form-contacto input[type="submit"]:hover,
+body.theme-alternative #form-contacto button[type="submit"]:hover {
+  background-color: #a37272;
+}
+
+/* ========================================
+   12. RESPONSIVE - MÓVILES Y TABLETS
+   ======================================== */
 @media (max-width: 768px) {
+    /* Selector de temas */
+    #theme-switcher {
+        top: auto;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: row;
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 10px 15px;
+        border-radius: 20px;
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+    }
+
+    .theme-btn {
+        width: 25px;
+        height: 25px;
+    }
+
+    /* Botón volver arriba */
     #btn-back-to-top {
         bottom: 20px;
-        right: 15px; /* Un poco más pegado al borde en pantallas pequeñas */
+        right: 15px;
         width: 45px;
         height: 45px;
     }
