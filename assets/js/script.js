@@ -39,8 +39,6 @@ $(document).ready(function() {
         localStorage.setItem('portfolioTheme', 'alternative');
     });
 
-// ------------------------------------
-
     // Validación del formulario
     $("#form-contacto").submit(function(event) {
         // Usamos .val() de JQuery para obtener valores
@@ -57,24 +55,5 @@ $(document).ready(function() {
         }
         return true;
     });
-// filepath: d:\Portafolio\portfolio\assets\js\script.js
-// ...existing code...
-    // ------------------------------------
 
-    // Validación del formulario
-    $("#form-contacto").submit(function(event) {
-        // Usamos .val() de JQuery para obtener valores
-        // CAMBIO: Usamos 'const' en lugar de 'var'
-        const nombre = $("#contacto-nombre").val();
-        const asunto = $("#contacto-asunto").val();
-        const mensaje = $("#contacto-mensaje").val();
-        
-        // Validación básica
-        if (nombre.length < 8 || asunto.length < 8 || mensaje.length < 15) {
-            event.preventDefault();
-            alert("Por favor revisa los campos:\n- Nombre: mínimo 8 caracteres\n- Asunto: mínimo 8 caracteres\n- Mensaje: mínimo 15 caracteres");
-            return false;
-        }
-        return true;
-    });
 });
